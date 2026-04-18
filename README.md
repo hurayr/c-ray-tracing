@@ -11,12 +11,12 @@ A ray tracer written in C++
 | `vec3.h` | 3D vector, also used as `point3` and `colour` |
 | `ray.h` | Ray class |
 | `colour.h` | Colour output |
-| `camera.h` | Camera, sampling, and ray colour logic |
+| `camera.h` | Camera (FOV + Positioning control), sampling, and ray colour logic |
 | `hittable.h` | Abstract base for hittable geometry |
 | `hittable_list.h` | Scene object container |
 | `sphere.h` | Sphere geometry |
 | `interval.h` | Ray `t` interval helpers |
-| `material.h` | Material abstraction, Lambertian diffuse, and metal |
+| `material.h` | Material abstraction + types of materials (metal, dielectric), as well as Lambertian diffuse logic |
 
 ## Progress
 
@@ -29,5 +29,5 @@ A ray tracer written in C++
 - [x] Antialiasing
 - [x] Diffuse materials
 - [x] Metal materials
-- [ ] Glass materials
-- [ ] Positionable camera, FOV, depth of field
+- [x] Glass materials
+- [x] Positionable camera, FOV, depth of field
