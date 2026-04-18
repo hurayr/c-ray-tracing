@@ -16,6 +16,7 @@ A ray tracer written in C++
 | `hittable_list.h` | Scene object container |
 | `sphere.h` | Sphere geometry |
 | `interval.h` | Ray `t` interval helpers |
+| `material.h` | Material abstraction, Lambertian diffuse, and metal |
 
 ## Progress
 
@@ -27,5 +28,6 @@ A ray tracer written in C++
 - [x] Hittable abstraction and scene list
 - [x] Antialiasing
 - [x] Diffuse materials
-- [ ] Metal and glass materials
+- [x] Metal materials
+- [ ] Glass materials
 - [ ] Positionable camera, FOV, depth of field
