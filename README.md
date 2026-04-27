@@ -12,17 +12,11 @@ The renderer writes PPM image output to `stdout`, so it composes naturally with 
 
 ## Features
 
-**Physically Based Materials**
+**Scene construction**
 
-- Lambertian (matte) diffuse surfaces
-- Metal with configurable fuzziness for rough reflections
-- Dielectric glass with Snell's law refraction and Schlick-approximated reflectance
-
-**Realistic Camera Model**
-
-- Positionable camera with configurable field of view
-- Thin-lens depth of field via defocus disk sampling
-- Adjustable focus distance
+- Polymorphic `hittable` interface for extensible geometry
+- Bounding volume hierarchy (BVH) for logarithmic-time ray–scene intersection
+- Efficient closest-hit traversal with early exit on bounding box misses
 
 **Sampling and shading**
 
@@ -31,11 +25,17 @@ The renderer writes PPM image output to `stdout`, so it composes naturally with 
 - Gamma-corrected colour output
 - Front/back face detection for correct inside/outside surface behaviour
 
-**Scene construction**
+**Textures**
 
-- Polymorphic `hittable` interface for extensible geometry
-- Bounding volume hierarchy (BVH) for logarithmic-time ray–scene intersection
-- Efficient closest-hit traversal with early exit on bounding box misses
+- Solid color and checker pattern textures
+- Image texture mapping using stb_image
+- UV coordinate mapping for spheres (spherical coordinates)
+
+**Realistic Camera Model**
+
+- Positionable camera with configurable field of view
+- Thin-lens depth of field via defocus disk sampling
+- Adjustable focus distance
 
 **Motion blur**
 
@@ -103,14 +103,18 @@ src/
 ├── sphere.h          — Ray–sphere intersection
 ├── material.h        — Material base + lambertian, metal, and dielectric
 ├── aabb.h            — Axis-aligned bounding box with slab-method ray intersection
-└── bvh.h             — Bounding volume hierarchy for sublinear ray–scene traversal
+├── bvh.h             — Bounding volume hierarchy for sublinear ray–scene traversal
+├── texture.h         — Texture types: solid color, checker, image
+├── stb_implement.h   — stb_image implementation translation unit
+└── external/
+    └── stb_image.h   — Image loading for pixel conversion (from https://github.com/nothings/stb)
 ```
 
 ## Future Improvements
 
 - [x] Motion blur for moving objects
 - [x] Bounding volume hierarchies (BVH) to accelerate rendering of complex scenes
-- [ ] Texture maps for image-based surface detail
+- [x] Texture maps for image-based surface detail
 - [ ] Perlin noise for procedural textures
 - [ ] Quadrilateral primitives (foundation for disks, triangles, rings, and other 2D surfaces)
 - [ ] Light sources
