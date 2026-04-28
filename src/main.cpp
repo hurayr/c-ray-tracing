@@ -15,8 +15,8 @@ int main();
 void bouncing_spheres() {
     hittable_list world;
 
-    auto checker = make_shared<checker_texture>(0.32, colour(0.2, 0.3, 0.1), colour(0.9, 0.9, 0.9));
-    world.add(make_shared<sphere>(point3(0, -1000, 0), 1000, make_shared<lambertian>(checker)));
+    auto earth_material = make_shared<solid_colour>(colour(0.5, 0.5, 0.5));
+    world.add(make_shared<sphere>(point3(0, -1000, 0), 1000, make_shared<lambertian>(earth_material)));
 
     for (int a{-11}; a < 11; a++) {
         for (int b{-11}; b < 11; b++) {
@@ -124,7 +124,7 @@ void earth() {
 }
 
 int main() {
-    switch (3) {
+    switch (1) {
         case 1:
             bouncing_spheres();
             break;
